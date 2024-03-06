@@ -1,0 +1,47 @@
+import numpy as np
+
+def calculate(list):
+  
+  if len(list)< 9:
+    raise ValueError('List must contain nine numbers.')
+  else:  
+    calculations = {'mean':'', 'variance':'', 'standard deviation':'', 'max':'', 'min':'', 'sum':''}
+
+    transformedList = np.array([list[0:3], list[3:6], list[6:9]])
+    transformedListmin = transformedList.min()
+    transformedListmax =transformedList.max()
+    transformedListsum = transformedList.sum()
+    transformedListmean = transformedList.mean()
+    transformedListvariance = transformedList.var()
+    transformedListstd = transformedList.std()
+
+    transformedListminAxis0 = transformedList.min(0)
+    transformedListmaxAxis0 = transformedList.max(0)
+    transformedListsumAxis0 = transformedList.sum(0)
+    transformedListmeanAxis0 = transformedList.mean(0)
+    transformedListvarianceAxis0 = transformedList.var(0)
+    transformedListstdAxis0 = transformedList.std(0)
+
+    transformedListminAxis1 = transformedList.min(1)
+    transformedListmaxAxis1 = transformedList.max(1)
+    transformedListsumAxis1 = transformedList.sum(1)
+    transformedListmeanAxis1 = transformedList.mean(1)
+    transformedListvarianceAxis1 = transformedList.var(1)
+    transformedListstdAxis1 = transformedList.std(1)
+
+
+
+    calculations.update({'min': [transformedListminAxis0.tolist(), transformedListminAxis1.tolist(), transformedListmin]})
+
+    calculations.update({'max': [transformedListmaxAxis0.tolist(),transformedListmaxAxis1.tolist(), transformedListmax]})
+
+    calculations.update({'sum':[ transformedListsumAxis0.tolist(), transformedListsumAxis1.tolist(),transformedListsum]})
+
+    calculations.update({'mean':[ transformedListmeanAxis0.tolist(), transformedListmeanAxis1.tolist(), transformedListmean]})
+
+    calculations.update({'variance':[ transformedListvarianceAxis0.tolist(), transformedListvarianceAxis1.tolist(),transformedListvariance]})
+    
+    calculations.update({'standard deviation': [ transformedListstdAxis0.tolist(), transformedListstdAxis1.tolist(),transformedListstd]})
+
+
+  return calculations
